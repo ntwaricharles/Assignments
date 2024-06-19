@@ -11,11 +11,15 @@
   <form id="add-form">
     <input type="text" id="title" placeholder="Title" required>
     <textarea id="description" placeholder="Description"></textarea>
-    <input type="datetime-local" id="due-date" required>
-    <button type="submit">Add</button>
+    <div class="form-row">
+      <input type="datetime-local" id="due-date" required>
+      <button type="submit">Add</button>
+    </div>
   </form>
-  <button id="sort-asc">Sort by Due Date (Ascending)</button>
-  <button id="sort-desc">Sort by Due Date (Descending)</button>
+  <div class="sort-buttons">
+    <button id="sort-asc">Sort by Due Date (Ascending)</button>
+    <button id="sort-desc">Sort by Due Date (Descending)</button>
+  </div>
   <ul id="todo-list"></ul>
   <script src="app.js"></script>
 </body>
