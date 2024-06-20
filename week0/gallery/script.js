@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const images = [
     {
       src: "./images/bowling.jpg",
-      thumb: "/images/bowling.jpg",
+      thumb: "./images/bowling.jpg",
       title: "Bowling",
       description: "This is the description for Bowling."
     },
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       src: "./images/cyclist.jpg",
-      thumb: "/images/cyclist.jpg",
+      thumb: "./images/cyclist.jpg",
       title: "Cyclist",
       description: "This is the description for Cyclist."
     },
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
      {
       src: "./images/developer.jpg",
-      thumb: "/images/developer.jpg",
+      thumb: "./images/developer.jpg",
       title: "developer",
       description: "This is the description for developer."
     },
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       src: "./images/bulbs.jpg",
-      thumb: "/images/bulbs.jpg",
+      thumb: "./images/bulbs.jpg",
       title: "bulbs",
       description: "This is the description for bulbs."
     },
@@ -87,19 +87,34 @@ document.addEventListener("DOMContentLoaded", () => {
     lbDescription.textContent = images[index].description;
     lightbox.style.display = "flex";
     currentImageIndex = index;
+    function updateNavButtons() {
+    lbPrev.style.display = currentImageIndex === 0 ? "none" : "block";
+    lbNext.style.display = currentImageIndex === images.length - 1 ? "none" : "block";  
   }
-
+  updateNavButtons()
+  }
+  
   function hideLightbox() {
     lightbox.style.display = "none";
   }
-
+  
   function nextImage() {
-    currentImageIndex = (currentImageIndex + 1) % images.length;
+    // console.log(`currentImageIndex in nextImage is ${currentImageIndex}`);
+    if (currentImageIndex < images.length - 1) {
+      currentImageIndex++;
+    } else {
+      currentImageIndex = 0;
+    }
     showLightbox(currentImageIndex);
   }
-
+  
   function prevImage() {
-    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+    // console.log(`currentImageIndex in previous image is ${currentImageIndex}`);
+    if (currentImageIndex > 0) {
+      currentImageIndex--;
+    } else {
+      currentImageIndex = images.length - 1;  
+    }
     showLightbox(currentImageIndex);
   }
 
