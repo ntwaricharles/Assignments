@@ -18,14 +18,19 @@ const superHero = {
   powers: ['super strength', 'fighting', 'lion killer'],
   weakness: 'women',
   usePower: function(powerName) {
-    console.log(`${this.name} is using ${powerName}!`);
+    if (this.powers.includes(powerName)) {
+        console.log(`${this.name} uses ${powerName}!`);
+    } 
+    else {
+        console.log(`${this.name} does not have the power.`);
+    }
   },
   revealIdentity: function() {
     console.log(`The secret identity of ${this.name} is ${this.secretIdentity}!`);
   }
 };
 
-superHero.usePower('fighting');
+superHero.usePower();
 superHero.revealIdentity();
 
 
@@ -51,8 +56,32 @@ function Superhero(name, secretIdentity, powers, weakness) {
 const superhero1 = new Superhero('The Bible', 'Samson', ['super strength', 'fight', 'lion killer'], 'women');
 const superhero2 = new Superhero('The king', 'David', ['Faith', 'Sniper', 'Hunter'], 'women');
 
-superhero1.usePower();
+superhero1.usePower('uper strength');
 superhero2.revealIdentity();
+
+
+function Superhero(name, secretIdentity, powers, weakness) {
+  this.name = name;
+  this.secretIdentity = secretIdentity;
+  this.powers = powers;
+  this.weakness = weakness;
+  this.usePower = function(powerName) {
+    console.log(`${this.name} is using ${powerName}!`);
+  };
+  this.revealIdentity = function() {
+    console.log(`The secret identity of ${this.name} is ${this.secretIdentity}!`);
+  };
+}
+
+Superhero.prototype.fly = function() {
+  console.log(`${this.name} is flying!`);
+};
+
+const superHero1 = new Superhero('The Bible', 'Samson', ['super strength', 'fight', 'lion killer'], 'women');
+const superHero2 = new Superhero('The king', 'David', ['Faith', 'Sniper', 'Hunter'], 'women');
+
+superHero1.fly();
+superHero2.fly();
 
 
 function theSuperHero(name, secretIdentity, powers, weakness) {
